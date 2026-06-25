@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>千亿体育 · 资料索引与内容梳理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f1f3f5;
+            color: #2c3e50;
+            line-height: 1.7;
+            padding: 2rem 1.5rem;
+        }
+
+        .page-wrapper {
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        /* 开场短句 - 像书签一样轻 */
+        .opening {
+            background: #ffffff;
+            padding: 2.2rem 2rem 1.8rem;
+            border-radius: 28px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            margin-bottom: 2.5rem;
+        }
+
+        .opening p {
+            font-size: 1.25rem;
+            font-weight: 350;
+            letter-spacing: 0.02em;
+            color: #2c3e50;
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .opening strong {
+            font-weight: 500;
+            color: #1a2634;
+        }
+
+        /* 承接段落 —— 卡片式叙述 */
+        .context-card {
+            background: #ffffff;
+            padding: 2rem 2.2rem;
+            border-radius: 24px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e9edf0;
+            margin-bottom: 2.5rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .context-card p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .context-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .context-card a {
+            color: #1f3a5f;
+            text-decoration: none;
+            border-bottom: 1px solid #bcccd9;
+            padding-bottom: 1px;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .context-card a:hover {
+            border-bottom-color: #1f3a5f;
+            color: #0f253a;
+        }
+
+        /* 特点列表 —— 轻标签风格 */
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem 1.2rem;
+            margin: 1.6rem 0 0.4rem;
+        }
+
+        .feature-item {
+            background: #f8fafc;
+            border: 1px solid #dee4ea;
+            border-radius: 100px;
+            padding: 0.45rem 1.2rem 0.45rem 1.4rem;
+            font-size: 0.95rem;
+            color: #1f2b38;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            display: inline-flex;
+            align-items: center;
+            line-height: 1.6;
+        }
+
+        .feature-item::before {
+            content: "·";
+            font-weight: 600;
+            margin-right: 8px;
+            color: #647b94;
+            font-size: 1.2rem;
+        }
+
+        .feature-item:first-child::before {
+            content: "▹";
+            color: #3d5a73;
+        }
+
+        /* 场景段落 —— 用两个小卡片表示 */
+        .scene-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 2.2rem 0 1.8rem;
+        }
+
+        .scene-card {
+            flex: 1 1 200px;
+            background: #ffffff;
+            padding: 1.6rem 1.8rem;
+            border-radius: 20px;
+            border: 1px solid #e2e8ee;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .scene-card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.7rem;
+            color: #1f2f3f;
+            letter-spacing: 0.01em;
+        }
+
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #3b4d5e;
+        }
+
+        /* 温和结尾 —— 类似附注或后记 */
+        .closing-note {
+            background: #ffffff;
+            padding: 1.8rem 2rem 2rem;
+            border-radius: 26px;
+            border: 1px solid #eaedf0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.02);
+            margin-top: 1.5rem;
+        }
+
+        .closing-note p {
+            font-size: 0.98rem;
+            color: #2c4053;
+            margin-bottom: 0.8rem;
+        }
+
+        .closing-note p:last-child {
+            margin-bottom: 0;
+        }
+
+        .closing-note a {
+            color: #1f3a5f;
+            text-decoration: none;
+            border-bottom: 1px solid #c6d3df;
+            transition: border-color 0.2s;
+        }
+
+        .closing-note a:hover {
+            border-bottom-color: #1f3a5f;
+        }
+
+        .closing-note .small-hint {
+            font-size: 0.85rem;
+            color: #657b8c;
+            border-top: 1px solid #eaeef2;
+            padding-top: 1rem;
+            margin-top: 0.6rem;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+            .opening p {
+                font-size: 1.08rem;
+            }
+            .context-card {
+                padding: 1.6rem 1.4rem;
+            }
+            .feature-grid {
+                gap: 0.6rem 0.8rem;
+            }
+            .feature-item {
+                font-size: 0.9rem;
+                padding: 0.35rem 1rem 0.35rem 1.2rem;
+            }
+            .scene-card {
+                flex: 1 1 100%;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .feature-grid {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <!-- 开场短句：资料整理者的视角 -->
+    <div class="opening">
+        <p>从一个信息索引开始，把零散的内容慢慢收拢成可以翻阅的条目——这是整理的习惯，也是了解一个站点的起点。</p>
+    </div>
+
+    <!-- 承接段落：关于千亿体育的观察与梳理 -->
+    <div class="context-card">
+        <p>在浏览和归档体育资讯类站点时，<a href="https://cns-qianyisports.com">千亿体育</a>常常出现在几份不同的收藏夹里。有人把它当作日常浏览的据点，也有人把它放进「待细看」的文件夹。从结构上看，它的内容板块划分得比较清晰，赛事数据、资讯更新、社区讨论各自有独立的空间，查找起来不费力。</p>
+        <p>我在整理书签时注意到，这个站点的信息层级做得挺用心——没有把太多入口堆在一起，而是按类型做了区分。这样一来，即使初次打开也不会觉得眼花缭乱。页面加载速度也属于中上水准，对于经常需要切换页面看比分或者资讯的人来说，体验上会舒服一些。</p>
+    </div>
+
+    <!-- 特点列表：轻量的功能标签 -->
+    <div class="context-card" style="padding-bottom: 1.6rem;">
+        <p style="margin-bottom: 0.5rem; font-weight: 450; color: #1f3142;">整理过程中留意到的几个特点：</p>
+        <div class="feature-grid">
+            <span class="feature-item">赛事数据更新及时</span>
+            <span class="feature-item">内容分类直观</span>
+            <span class="feature-item">界面没有过度营销感</span>
+            <span class="feature-item">资讯与数据可并行浏览</span>
+            <span class="feature-item">移动端适配自然</span>
+        </div>
+    </div>
+
+    <!-- 场景卡片：两个使用情境 -->
+    <div class="scene-wrapper">
+        <div class="scene-card">
+            <h3>翻阅比赛信息</h3>
+            <p>周末想快速了解几场联赛的进程和阵容，打开站点后按赛事分类查找，数据表格加载流畅，不需要反复刷新。</p>
+        </div>
+        <div class="scene-card">
+            <h3>浏览体育资讯</h3>
+            <p>日常通勤时刷一刷最新动态，文章排版干净，图片大小合适，不会因为过多动效分散注意力。</p>
+        </div>
+    </div>
+
+    <!-- 温和结尾：有温度的收束 -->
+    <div class="closing-note">
+        <p>如果你也在整理自己的浏览清单，或者想找一个内容结构清楚的体育类站点，不妨把<a href="https://cns-qianyisports.com">千亿体育</a>加入收藏夹。它不像那种需要花时间适应布局的网站，打开之后基本能凭直觉找到想看的内容。</p>
+        <p>当然，每个人的使用习惯不同，适合别人的不一定完全适合自己。但作为资料索引的一个节点，它确实值得被记录和尝试。</p>
+        <div class="small-hint">
+            ⚬ 以上观察基于公开界面与个人整理体验，站点内容以实际页面为准。
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
